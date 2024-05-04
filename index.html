@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Test de Estadísticas D&D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+function calcularEstadisticas() {
+    const estadisticas = {
+        Fuerza: 10,
+        Destreza: 10,
+        Constitucion: 10,
+        Inteligencia: 10,
+        Sabiduria: 10,
+        Carisma: 10
+    };
+
+    const respuestas = document.querySelectorAll('input[type="radio"]:checked');
+    respuestas.forEach((respuesta) => {
+        const efectos = respuesta.value.split(',');
+        const statPos = efectos[0].split('+')[0];
+        const statNeg = efectos[1].split('-')[0];
+        estadisticas[statPos] = Math.min(16, estadisticas[statPos] + parseInt(efectos[0].split('+')[1]));
+        estadisticas[statNeg] = Math.max(8, estadisticas[statNeg] - parseInt(efectos[1].split('-')[1]));
+    });
+
+    const resultadoDiv = document.getElementById('resultado').querySelector('div');
+    resultadoDiv.innerHTML = ''; // Limpia el contenido anterior
+    for (let stat in estadisticas) {
+        const p = document.createElement('p');
+        p.textContent = `${stat}: ${estadisticas[stat]}`;
+        resultadoDiv.appendChild(p);
+    }
+
+    document.getElementById('resultado').style.display = "block"
+    document.getElementById('testForm').style.display = "none"
+}
+
+function capturarPantalla() {
+    html2canvas(document.getElementById("resultado")).then(canvas => {
+        // Crear un elemento <a> para iniciar la descarga
+        const a = document.createElement('a');
+        // El nombre del archivo descargado puede ser cualquier cosa que desees
+        a.download = 'Resultados-Captura.png';
+        // Convertir el canvas a data URL y asignarlo como href del enlace
+        a.href = canvas.toDataURL("image/png");
+        // Simular un clic en el enlace para iniciar la descarga
+        a.click();
+    });
+}
+
+
+</script>
+</head>
+<body>
+<h1>Test de Estadísticas para D&D</h1>
+<section id="resultado">
+    <h2>Tu resultados son...</h2>
+    <div></div>
+    <button onclick="capturarPantalla()">Capturar y Descargar Resultados</button>
+
+</section>
+<form id="testForm">
+
+    <!-- Genera las preguntas y opciones -->
+
+    <!-- Pregunta 1 -->
+    <p>1. Te enfrentas a una puerta cerrada. ¿Qué haces?</p>
+    <section>
+
+        <input type="radio" id="q1a" name="q1" value="Fuerza+1,Inteligencia-1">
+        <label for="q1a">A. La derribo a golpes.</label><br>
+        <input type="radio" id="q1b" name="q1" value="Inteligencia+1,Fuerza-1">
+        <label for="q1b">B. Busco una llave o mecanismo oculto.</label><br>
+        <input type="radio" id="q1c" name="q1" value="Sabiduria+1,Carisma-1">
+        <label for="q1c">C. Vigilo la puerta mientras los demás deciden qué hacer.</label><br>
+    </section>
+
+    <!-- Pregunta 2 -->
+    <section>
+
+        <p>2. Un desconocido te ofrece una recompensa por información. ¿Cómo reaccionas?</p>
+        <input type="radio" id="q2a" name="q2" value="Carisma+1,Sabiduria-1">
+        <label for="q2a">A. Le doy la información a cambio de la recompensa.</label><br>
+        <input type="radio" id="q2b" name="q2" value="Inteligencia+1,Carisma-1">
+        <label for="q2b">B. Le miento para obtener más beneficios.</label><br>
+        <input type="radio" id="q2c" name="q2" value="Sabiduria+1,Inteligencia-1">
+        <label for="q2c">C. Me niego a tratar con sospechosos.</label><br>
+    </section>
+
+    <!-- Pregunta 3 -->
+    <section>
+
+        <p>3. ¿Cómo te preparas para una larga expedición?</p>
+        <input type="radio" id="q3a" name="q3" value="Constitucion+1,Destreza-1">
+        <label for="q3a">A. Empaco muchas provisiones.</label><br>
+        <input type="radio" id="q3b" name="q3" value="Destreza+1,Constitucion-1">
+        <label for="q3b">B. Reviso y ajusto mi equipo.</label><br>
+        <input type="radio" id="q3c" name="q3" value="Inteligencia+1,Fuerza-1">
+        <label for="q3c">C. Estudio mapas y rutas.</label><br>
+    </section>
+
+    <!-- Pregunta 4 -->
+    <p>4. Te encuentras con un enigma mágico. ¿Qué haces?</p><section>
+
+        <input type="radio" id="q4a" name="q4" value="Inteligencia+1,Fuerza-1">
+        <label for="q4a">A. Intento resolverlo con lógica.</label><br>
+        <input type="radio" id="q4b" name="q4" value="Sabiduria+1,Destreza-1">
+        <label for="q4b">B. Busco ayuda mágica o divina.</label><br>
+        <input type="radio" id="q4c" name="q4" value="Fuerza+1,Inteligencia-1">
+        <label for="q4c">C. Rompo el enigma con fuerza bruta.</label><br>
+    </section>
+
+    <!-- Pregunta 5 -->
+    <p>5. Un enemigo te desafía a un duelo. ¿Cuál es tu estrategia?</p><section>
+
+        <input type="radio" id="q5a" name="q5" value="Carisma+1,Sabiduria-1">
+        <label for="q5a">A. Lo enfrento de frente para impresionar a los espectadores.</label><br>
+        <input type="radio" id="q5b" name="q5" value="Destreza+1,Fuerza-1">
+        <label for="q5b">B. Uso el entorno a mi favor para moverme ágilmente.</label><br>
+        <input type="radio" id="q5c" name="q5" value="Inteligencia+1,Fuerza-1">
+        <label for="q5c">C. Busco una forma de evitar el conflicto.</label><br>
+    </section>
+
+    <!-- Pregunta 6 -->
+    <p>6. ¿Cómo reaccionas ante un compañero herido en batalla?</p><section>
+
+        <input type="radio" id="q6a" name="q6" value="Fuerza+1,Destreza-1">
+        <label for="q6a">A. Lo protejo con mi cuerpo mientras otros ayudan.</label><br>
+        <input type="radio" id="q6b" name="q6" value="Sabiduria+1,Carisma-1">
+        <label for="q6b">B. Busco la forma más rápida y eficaz de tratar sus heridas.</label><br>
+        <input type="radio" id="q6c" name="q6" value="Carisma+1,Inteligencia-1">
+        <label for="q6c">C. Uso mi carisma para mantener alta la moral del grupo.</label><br>
+    </section>
+
+    <!-- Pregunta 7 -->
+    <p>7. Si te pierdes en el bosque, ¿qué haces?</p><section>
+
+        <input type="radio" id="q7a" name="q7" value="Destreza+1,Sabiduria-1">
+        <label for="q7a">A. Escalo un árbol alto para buscar señales visibles.</label><br>
+        <input type="radio" id="q7b" name="q7" value="Inteligencia+1,Constitucion-1">
+        <label for="q7b">B. Medito para recordar mapas y caminos.</label><br>
+        <input type="radio" id="q7c" name="q7" value="Constitucion+1,Inteligencia-1">
+        <label for="q7c">C. Sigo caminando hasta encontrar un camino.</label><br>
+    </section>
+
+    <!-- Pregunta 8 -->
+    <p>8. Te ofrecen un pacto dudoso con un poder desconocido. ¿Cuál es tu respuesta?</p><section>
+
+        <input type="radio" id="q8a" name="q8" value="Carisma+1,Inteligencia-1">
+        <label for="q8a">A. Acepto para obtener poder rápidamente.</label><br>
+        <input type="radio" id="q8b" name="q8" value="Inteligencia+1,Carisma-1">
+        <label for="q8b">B. Analizo los pros y contras antes de decidir.</label><br>
+        <input type="radio" id="q8c" name="q8" value="Sabiduria+1,Carisma-1">
+        <label for="q8c">C. Rechazo cualquier trato con seres desconocidos.</label><br>
+    </section>
+
+    <!-- Pregunta 9 -->
+    <p>9. ¿Cómo te comportas en una fiesta real?</p><section>
+
+        <input type="radio" id="q9a" name="q9" value="Carisma+1,Destreza-1">
+        <label for="q9a">A. Me mezclo y charlo con todos los invitados.</label><br>
+        <input type="radio" id="q9b" name="q9" value="Sabiduria+1,Fuerza-1">
+        <label for="q9b">B. Observo discretamente desde un rincón.</label><br>
+        <input type="radio" id="q9c" name="q9" value="Constitucion+1,Inteligencia-1">
+        <label for="q9c">C. Me concentro en la comida y bebida.</label><br>
+    </section>
+
+    <!-- Pregunta 10 -->
+    <p>10. Enfrentas a un poderoso hechicero. ¿Cómo manejas la situación?</p><section>
+
+        <input type="radio" id="q10a" name="q10" value="Fuerza+1,Destreza-1">
+        <label for="q10a">A. Confronto su magia con ataques físicos.</label><br>
+        <input type="radio" id="q10b" name="q10" value="Inteligencia+1,Sabiduria-1">
+        <label for="q10b">B. Intento outsmart him with cunning plans.</label><br>
+        <input type="radio" id="q10c" name="q10" value="Carisma+1,Sabiduria-1">
+        <label for="q10c">C. Busco encontrar su debilidad emocional.</label><br>
+    </section>
+
+    <!-- Pregunta 11 -->
+    <p>11. Un ladrón te ha robado. ¿Cómo reaccionas?</p><section>
+
+        <input type="radio" id="q11a" name="q11" value="Destreza+1,Sabiduria-1">
+        <label for="q11a">A. Lo persigo a toda velocidad.</label><br>
+        <input type="radio" id="q11b" name="q11" value="Carisma+1,Inteligencia-1">
+        <label for="q11b">B. Grito para llamar atención y ayuda.</label><br>
+        <input type="radio" id="q11c" name="q11" value="Inteligencia+1,Fuerza-1">
+        <label for="q11c">C. Memorizo su rostro para futura referencia.</label><br>
+    </section>
+
+    <!-- Pregunta 12 -->
+    <p>12. Estás en una biblioteca antigua. ¿Qué haces?</p><section>
+
+        <input type="radio" id="q12a" name="q12" value="Inteligencia+1,Fuerza-1">
+        <label for="q12a">A. Estudio los libros más raros para aprender nuevos hechizos.</label><br>
+        <input type="radio" id="q12b" name="q12" value="Sabiduria+1,Carisma-1">
+        <label for="q12b">B. Busco conocimiento sobre la historia del lugar.</label><br>
+        <input type="radio" id="q12c" name="q12" value="Carisma+1,Constitucion-1">
+        <label for="q12c">C. Chismorreo con los bibliotecarios para obtener información.</label><br>
+    </section>
+
+    <!-- Pregunta 13 -->
+    <p>13. Un amigo te pide un préstamo de dinero. ¿Cómo respondes?</p><section>
+
+        <input type="radio" id="q13a" name="q13" value="Carisma+1,Sabiduria-1">
+        <label for="q13a">A. Le presto el dinero sin hacer preguntas.</label><br>
+        <input type="radio" id="q13b" name="q13" value="Sabiduria+1,Constitucion-1">
+        <label for="q13b">B. Le aconsejo sobre otras opciones para resolver su situación.</label><br>
+        <input type="radio" id="q13c" name="q13" value="Constitucion+1,Carisma-1">
+        <label for="q13c">C. Le doy el dinero, pero con un contrato de préstamo y plazos de pago.</label><br>
+    </section>
+
+    <!-- Pregunta 14 -->
+    <p>14. ¿Qué haces si te encuentras con un dragón en su guarida?</p><section>
+
+        <input type="radio" id="q14a" name="q14" value="Fuerza+1,Destreza-1">
+        <label for="q14a">A. Ataco con todo lo que tengo para impresionarlo.</label><br>
+        <input type="radio" id="q14b" name="q14" value="Sabiduria+1,Inteligencia-1">
+        <label for="q14b">B. Trato de hablar y negociar para evitar un enfrentamiento.</label><br>
+        <input type="radio" id="q14c" name="q14" value="Destreza+1,Fuerza-1">
+        <label for="q14c">C. Busco una salida o escondite para evitar ser visto.</label><br>
+    </section>
+
+    <!-- Pregunta 15 -->
+    <p>15. ¿Cómo enfrentas a un grupo de bandidos hostiles en el camino?</p><section>
+
+        <input type="radio" id="q15a" name="q15" value="Fuerza+1,Constitucion-1">
+        <label for="q15a">A. Me lanzo al ataque para sorprenderlos.</label><br>
+        <input type="radio" id="q15b" name="q15" value="Destreza+1,Carisma-1">
+        <label for="q15b">B. Intento convencerlos de que no soy una amenaza.</label><br>
+        <input type="radio" id="q15c" name="q15" value="Inteligencia+1,Destreza-1">
+        <label for="q15c">C. Planeo una estrategia para emboscarlos.</label><br>
+    </section>
+
+    <!-- Pregunta 16 -->
+    <p>16. Te encuentras con una criatura mágica en el bosque. ¿Cómo reaccionas?</p><section>
+
+        <input type="radio" id="q16a" name="q16" value="Inteligencia+1,Constitucion-1">
+        <label for="q16a">A. Intento comunicarme con ella utilizando magia.</label><br>
+        <input type="radio" id="q16b" name="q16" value="Sabiduria+1,Carisma-1">
+        <label for="q16b">B. Observo su comportamiento para determinar si es amigable o no.</label><br>
+        <input type="radio" id="q16c" name="q16" value="Carisma+1,Destreza-1">
+        <label for="q16c">C. Me acerco con cautela y trato de establecer una conexión emocional.</label><br>
+    </section>
+
+    <!-- Pregunta 17 -->
+    <p>17. ¿Qué haces si descubres una conspiración en tu reino?</p><section>
+
+        <input type="radio" id="q17a" name="q17" value="Inteligencia+1,Sabiduria-1">
+        <label for="q17a">A. Investigar y reunir pruebas para exponer la conspiración.</label><br>
+        <input type="radio" id="q17b" name="q17" value="Carisma+1,Constitucion-1">
+        <label for="q17b">B. Reunir aliados y prepararme para enfrentar la conspiración abiertamente.</label><br>
+        <input type="radio" id="q17c" name="q17" value="Sabiduria+1,Inteligencia-1">
+        <label for="q17c">C. Ignorar la conspiración y centrarme en mis propios asuntos.</label><br>
+    </section>
+
+    <!-- Pregunta 18 -->
+    <p>18. Te encuentras con un pueblo en apuros. ¿Cómo decides ayudar?</p><section>
+
+        <input type="radio" id="q18a" name="q18" value="Carisma+1,Destreza-1">
+        <label for="q18a">A. Organizo un evento benéfico para recaudar fondos.</label><br>
+        <input type="radio" id="q18b" name="q18" value="Sabiduria+1,Fuerza-1">
+        <label for="q18b">B. Ofrezco mi ayuda física y mano de obra para resolver problemas.</label><br>
+        <input type="radio" id="q18c" name="q18" value="Inteligencia+1,Carisma-1">
+        <label for="q18c">C. Creo un plan a largo plazo para mejorar la situación del pueblo.</label><br>
+    </section>
+
+    <!-- Pregunta 19 -->
+    <p>19. Encuentras una antigua reliquia mágica. ¿Qué haces con ella?</p><section>
+
+        <input type="radio" id="q19a" name="q19" value="Inteligencia+1,Fuerza-1">
+        <label for="q19a">A. Investigo su historia y propósito antes de decidir qué hacer.</label><br>
+        <input type="radio" id="q19b" name="q19" value="Carisma+1,Constitucion-1">
+        <label for="q19b">B. La exhibo para impresionar a los demás.</label><br>
+        <input type="radio" id="q19c" name="q19" value="Sabiduria+1,Destreza-1">
+        <label for="q19c">C. La mantengo oculta y la estudio en secreto.</label><br>
+    </section>
+
+    <!-- Pregunta 20 -->
+    <p>20. Te encuentras con un artefacto antiguo con poder destructivo. ¿Qué haces?</p><section>
+
+        <input type="radio" id="q20a" name="q20" value="Inteligencia+1,Carisma-1">
+        <label for="q20a">A. Trato de entender y controlar su poder.</label><br>
+        <input type="radio" id="q20b" name="q20" value="Sabiduria+1,Fuerza-1">
+        <label for="q20b">B. Busco una forma de destruirlo o sellarlo de forma segura.</label><br>
+        <input type="radio" id="q20c" name="q20" value="Constitucion+1,Destreza-1">
+        <label for="q20c">C. Me alejo de él y advierto a otros sobre su peligro.</label><br>
+    </section>
+
+    <!-- Botón para calcular las estadísticas -->
+    <button type="button" onclick="calcularEstadisticas()">Calcular Estadísticas</button>
+</form>
+</body>
+</html>

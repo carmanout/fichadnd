@@ -1,0 +1,91 @@
+.yusei-magic-regular {
+    font-family: "Yusei Magic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #ffffff;
+    font-family: "Yusei Magic", sans-serif;
+    padding: 20px;
+    margin: 0;
+    background-image: url('./assets/fondo.gif');
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ajusta el cuerpo a la altura completa de la ventana */
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+}
+
+#resultado{
+    display: none;
+    background-color: black;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+form {
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    margin: auto;
+    width: 80%;
+    max-width: 600px; /* Añade un máximo de ancho para evitar que el formulario sea demasiado grande en pantallas grandes */
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    margin: 10px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4a4e69;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #22223b;
+}
+
+p {
+    color: rgb(0, 183, 255);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+
+
+    h1, label {
+        font-size: larger; /* Aumenta el tamaño de la fuente para mejor legibilidad */
+    }
+}
