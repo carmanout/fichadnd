@@ -68,233 +68,147 @@ function capturarPantalla() {
 </section>
 <form id="testForm">
 
-    <!-- Genera las preguntas y opciones -->
+    <div class="question">
+        <p>1. Te lanzan purpurina en plena actuación, ¿cómo reaccionas?</p>
+        <input type="radio" id="q1a" name="q1" value="Carisma+1,Inteligencia-1"><label for="q1a">A. Con una pose dramática. </label><br>
+        <input type="radio" id="q1b" name="q1" value="Carisma+1,Destreza-1"><label for="q1b">B. Con un comentario ingenioso. </label><br>
+        <input type="radio" id="q1c" name="q1" value="Carisma+1,Sabiduría-1"><label for="q1c">C. Sigues bailando como si nada.</label>
+    </div>
 
-    <!-- Pregunta 1 -->
-    <p>1. Te enfrentas a una puerta cerrada. ¿Qué haces?</p>
-    <section>
+    <div class="question">
+        <p>2. ¿Qué canción eliges para un lip-sync épico?</p>
+        <input type="radio" id="q2a" name="q2" value="Sabiduría+1,Destreza-1"><label for="q2a">A. Una balada emotiva. </label><br>
+        <input type="radio" id="q2b" name="q2" value="Carisma+1,Inteligencia-1"><label for="q2b">B. Un pop enérgico. </label><br>
+        <input type="radio" id="q2c" name="q2" value="Fuerza+1,Carisma-1"><label for="q2c">C. Un rock clásico.</label>
+    </div>
 
-        <input type="radio" id="q1a" name="q1" value="Fuerza+1,Inteligencia-1">
-        <label for="q1a">A. La derribo a golpes.</label><br>
-        <input type="radio" id="q1b" name="q1" value="Inteligencia+1,Fuerza-1">
-        <label for="q1b">B. Busco una llave o mecanismo oculto.</label><br>
-        <input type="radio" id="q1c" name="q1" value="Sabiduria+1,Carisma-1">
-        <label for="q1c">C. Vigilo la puerta mientras los demás deciden qué hacer.</label><br>
-    </section>
+    <div class="question">
+        <p>3. Escoges un outfit para la gran final, ¿qué estilo prefieres?</p>
+        <input type="radio" id="q3a" name="q3" value="Carisma+1,Destreza-1"><label for="q3a">A. Brillante y llamativo. </label><br>
+        <input type="radio" id="q3b" name="q3" value="Inteligencia+1,Fuerza-1"><label for="q3b">B. Elegante y sofisticado. </label><br>
+        <input type="radio" id="q3c" name="q3" value="Constitución+1,Sabiduría-1"><label for="q3c">C. Cómodo y resistente.</label>
+    </div>
 
-    <!-- Pregunta 2 -->
-    <section>
+    <div class="question">
+        <p>4. Un rival critica tu vestuario, ¿qué haces?</p>
+        <input type="radio" id="q4a" name="q4" value="Sabiduría+1,Carisma-1"><label for="q4a">A. Ignoras y sonríes. </label><br>
+        <input type="radio" id="q4b" name="q4" value="Carisma+1,Inteligencia-1"><label for="q4b">B. Contestas con un chiste. </label><br>
+        <input type="radio" id="q4c" name="q4" value="Inteligencia+1,Destreza-1"><label for="q4c">C. Cambias de tema hábilmente.</label>
+    </div>
 
-        <p>2. Un desconocido te ofrece una recompensa por información. ¿Cómo reaccionas?</p>
-        <input type="radio" id="q2a" name="q2" value="Carisma+1,Sabiduria-1">
-        <label for="q2a">A. Le doy la información a cambio de la recompensa.</label><br>
-        <input type="radio" id="q2b" name="q2" value="Inteligencia+1,Carisma-1">
-        <label for="q2b">B. Le miento para obtener más beneficios.</label><br>
-        <input type="radio" id="q2c" name="q2" value="Sabiduria+1,Inteligencia-1">
-        <label for="q2c">C. Me niego a tratar con sospechosos.</label><br>
-    </section>
+    <div class="question">
+        <p>5. ¿Cómo manejas el estrés antes de un show?</p>
+        <input type="radio" id="q5a" name="q5" value="Sabiduría+1,Destreza-1"><label for="q5a">A. Meditación y calma. </label><br>
+        <input type="radio" id="q5b" name="q5" value="Constitución+1,Inteligencia-1"><label for="q5b">B. Ejercicios de calentamiento. </label><br>
+        <input type="radio" id="q5c" name="q5" value="Inteligencia+1,Constitución-1"><label for="q5c">C. Repasando el guion y los movimientos.</label>
+    </div>
 
-    <!-- Pregunta 3 -->
-    <section>
+    <div class="question">
+        <p>6. El público está muerto esta noche, ¿cómo levantas los ánimos?</p>
+        <input type="radio" id="q6a" name="q6" value="Destreza+1,Sabiduría-1"><label for="q6a">A. Con un número acrobático. </label><br>
+        <input type="radio" id="q6b" name="q6" value="Carisma+1,Fuerza-1"><label for="q6b">B. Interactuando y animando al público. </label><br>
+        <input type="radio" id="q6c" name="q6" value="Inteligencia+1,Carisma-1"><label for="q6c">C. Improvisando algo nuevo.</label>
+    </div>
 
-        <p>3. ¿Cómo te preparas para una larga expedición?</p>
-        <input type="radio" id="q3a" name="q3" value="Constitucion+1,Destreza-1">
-        <label for="q3a">A. Empaco muchas provisiones.</label><br>
-        <input type="radio" id="q3b" name="q3" value="Destreza+1,Constitucion-1">
-        <label for="q3b">B. Reviso y ajusto mi equipo.</label><br>
-        <input type="radio" id="q3c" name="q3" value="Inteligencia+1,Fuerza-1">
-        <label for="q3c">C. Estudio mapas y rutas.</label><br>
-    </section>
+    <div class="question">
+        <p>7. ¿Qué haces en un día libre entre competiciones?</p>
+        <input type="radio" id="q7a" name="q7" value="Constitución+1,Inteligencia-1"><label for="q7a">A. Spa y relax. </label><br>
+        <input type="radio" id="q7b" name="q7" value="Carisma+1,Constitución-1"><label for="q7b">B. Sesión de fotos para redes. </label><br>
+        <input type="radio" id="q7c" name="q7" value="Inteligencia+1,Carisma-1"><label for="q7c">C. Lectura y estudio de nuevos estilos.</label>
+    </div>
 
-    <!-- Pregunta 4 -->
-    <p>4. Te encuentras con un enigma mágico. ¿Qué haces?</p><section>
+    <div class="question">
+        <p>8. Te piden crear un número inspirado en un icono queer, ¿a quién eliges?</p>
+        <input type="radio" id="q8a" name="q8" value="Carisma+1,Destreza-1"><label for="q8a">A. Mónica Naranjo. </label><br>
+        <input type="radio" id="q8b" name="q8" value="Sabiduría+1,Constitución-1"><label for="q8b">B. Lady Gaga. </label><br>
+        <input type="radio" id="q8c" name="q8" value="Destreza+1,Inteligencia-1"><label for="q8c">C. Rafaella Carrá.</label>
+    </div>
 
-        <input type="radio" id="q4a" name="q4" value="Inteligencia+1,Fuerza-1">
-        <label for="q4a">A. Intento resolverlo con lógica.</label><br>
-        <input type="radio" id="q4b" name="q4" value="Sabiduria+1,Destreza-1">
-        <label for="q4b">B. Busco ayuda mágica o divina.</label><br>
-        <input type="radio" id="q4c" name="q4" value="Fuerza+1,Inteligencia-1">
-        <label for="q4c">C. Rompo el enigma con fuerza bruta.</label><br>
-    </section>
+    <div class="question">
+        <p>9. ¿Cómo reaccionas si se rompe tu tacón en el escenario?</p>
+        <input type="radio" id="q9a" name="q9" value="Constitución+1,Carisma-1"><label for="q9a">A. Sigues el show a pie plano. </label><br>
+        <input type="radio" id="q9b" name="q9" value="Destreza+1,Sabiduría-1"><label for="q9b">B. Usas el tacón roto como parte del acto. </label><br>
+        <input type="radio" id="q9c" name="q9" value="Carisma+1,Inteligencia-1"><label for="q9c">C. Haces una salida dramática.</label>
+    </div>
 
-    <!-- Pregunta 5 -->
-    <p>5. Un enemigo te desafía a un duelo. ¿Cuál es tu estrategia?</p><section>
+    <div class="question">
+        <p>10. ¿Qué tema eliges para la noche de baile temática?</p>
+        <input type="radio" id="q10a" name="q10" value="Carisma+1,Fuerza-1"><label for="q10a">A. Disco retro. </label><br>
+        <input type="radio" id="q10b" name="q10" value="Destreza+1,Constitución-1"><label for="q10b">B. Tango dramático. </label><br>
+        <input type="radio" id="q10c" name="q10" value="Inteligencia+1,Carisma-1"><label for="q10c">C. Vals elegante.</label>
+    </div>
 
-        <input type="radio" id="q5a" name="q5" value="Carisma+1,Sabiduria-1">
-        <label for="q5a">A. Lo enfrento de frente para impresionar a los espectadores.</label><br>
-        <input type="radio" id="q5b" name="q5" value="Destreza+1,Fuerza-1">
-        <label for="q5b">B. Uso el entorno a mi favor para moverme ágilmente.</label><br>
-        <input type="radio" id="q5c" name="q5" value="Inteligencia+1,Fuerza-1">
-        <label for="q5c">C. Busco una forma de evitar el conflicto.</label><br>
-    </section>
+    <div class="question">
+        <p>11. Un nuevo drag en la escena te pide consejos, ¿qué le dices?</p>
+        <input type="radio" id="q11a" name="q11" value="Carisma+1,Inteligencia-1"><label for="q11a">A. "Sé tú mismo y brilla". </label><br>
+        <input type="radio" id="q11b" name="q11" value="Sabiduría+1,Destreza-1"><label for="q11b">B. "Practica y perfecciona tu arte". </label><br>
+        <input type="radio" id="q11c" name="q11" value="Constitución+1,Sabiduría-1"><label for="q11c">C. "Mantén tu salud primero".</label>
+    </div>
 
-    <!-- Pregunta 6 -->
-    <p>6. ¿Cómo reaccionas ante un compañero herido en batalla?</p><section>
+    <div class="question">
+        <p>12. ¿Cómo personalizas tu vestuario?</p>
+        <input type="radio" id="q12a" name="q12" value="Inteligencia+1,Constitución-1"><label for="q12a">A. Con mensajes políticos sutiles. </label><br>
+        <input type="radio" id="q12b" name="q12" value="Carisma+1,Sabiduría-1"><label for="q12b">B. Con purpurina y brillos espectaculares. </label><br>
+        <input type="radio" id="q12c" name="q12" value="Destreza+1,Fuerza-1"><label for="q12c">C. Con detalles que mejoran el movimiento.</label>
+    </div>
 
-        <input type="radio" id="q6a" name="q6" value="Fuerza+1,Destreza-1">
-        <label for="q6a">A. Lo protejo con mi cuerpo mientras otros ayudan.</label><br>
-        <input type="radio" id="q6b" name="q6" value="Sabiduria+1,Carisma-1">
-        <label for="q6b">B. Busco la forma más rápida y eficaz de tratar sus heridas.</label><br>
-        <input type="radio" id="q6c" name="q6" value="Carisma+1,Inteligencia-1">
-        <label for="q6c">C. Uso mi carisma para mantener alta la moral del grupo.</label><br>
-    </section>
+    <div class="question">
+        <p>13. ¿Cuál es tu estrategia para destacar en una sesión de fotos?</p>
+        <input type="radio" id="q13a" name="q13" value="Destreza+1,Inteligencia-1"><label for="q13a">A. Poses únicas y atrevidas. </label><br>
+        <input type="radio" id="q13b" name="q13" value="Carisma+1,Constitución-1"><label for="q13b">B. Una mirada penetrante. </label><br>
+        <input type="radio" id="q13c" name="q13" value="Inteligencia+1,Destreza-1"><label for="q13c">C. Accesorios innovadores.</label>
+    </div>
 
-    <!-- Pregunta 7 -->
-    <p>7. Si te pierdes en el bosque, ¿qué haces?</p><section>
+    <div class="question">
+        <p>14. ¿Qué tipo de música pones mientras te preparas para actuar?</p>
+        <input type="radio" id="q14a" name="q14" value="Carisma+1,Sabiduría-1"><label for="q14a">A. Pop animado para motivarte. </label><br>
+        <input type="radio" id="q14b" name="q14" value="Inteligencia+1,Constitución-1"><label for="q14b">B. Clásica para concentrarte. </label><br>
+        <input type="radio" id="q14c" name="q14" value="Fuerza+1,Inteligencia-1"><label for="q14c">C. Rock para energizarte.</label>
+    </div>
 
-        <input type="radio" id="q7a" name="q7" value="Destreza+1,Sabiduria-1">
-        <label for="q7a">A. Escalo un árbol alto para buscar señales visibles.</label><br>
-        <input type="radio" id="q7b" name="q7" value="Inteligencia+1,Constitucion-1">
-        <label for="q7b">B. Medito para recordar mapas y caminos.</label><br>
-        <input type="radio" id="q7c" name="q7" value="Constitucion+1,Inteligencia-1">
-        <label for="q7c">C. Sigo caminando hasta encontrar un camino.</label><br>
-    </section>
+    <div class="question">
+        <p>15. Un fan te hace un regalo personalizado, ¿qué prefieres que sea?</p>
+        <input type="radio" id="q15a" name="q15" value="Inteligencia+1,Destreza-1"><label for="q15a">A. Una pintura tuya. </label><br>
+        <input type="radio" id="q15b" name="q15" value="Destreza+1,Fuerza-1"><label for="q15b">B. Una prenda hecha a mano. </label><br>
+        <input type="radio" id="q15c" name="q15" value="Sabiduría+1,Carisma-1"><label for="q15c">C. Un poema inspirado en ti.</label>
+    </div>
 
-    <!-- Pregunta 8 -->
-    <p>8. Te ofrecen un pacto dudoso con un poder desconocido. ¿Cuál es tu respuesta?</p><section>
+    <div class="question">
+        <p>16. ¿Qué haces si otro concursante te copia el look?</p>
+        <input type="radio" id="q16a" name="q16" value="Sabiduría+1,Fuerza-1"><label for="q16a">A. Lo tomas como un cumplido. </label><br>
+        <input type="radio" id="q16b" name="q16" value="Destreza+1,Inteligencia-1"><label for="q16b">B. Cambias tu look para destacar aún más. </label><br>
+        <input type="radio" id="q16c" name="q16" value="Carisma+1,Constitución-1"><label for="q16c">C. Confrontas al concursante amablemente.</label>
+    </div>
 
-        <input type="radio" id="q8a" name="q8" value="Carisma+1,Inteligencia-1">
-        <label for="q8a">A. Acepto para obtener poder rápidamente.</label><br>
-        <input type="radio" id="q8b" name="q8" value="Inteligencia+1,Carisma-1">
-        <label for="q8b">B. Analizo los pros y contras antes de decidir.</label><br>
-        <input type="radio" id="q8c" name="q8" value="Sabiduria+1,Carisma-1">
-        <label for="q8c">C. Rechazo cualquier trato con seres desconocidos.</label><br>
-    </section>
+    <div class="question">
+        <p>17. ¿Qué técnica de maquillaje prefieres dominar?</p>
+        <input type="radio" id="q17a" name="q17" value="Destreza+1,Carisma-1"><label for="q17a">A. Contouring perfecto. </label><br>
+        <input type="radio" id="q17b" name="q17" value="Inteligencia+1,Sabiduría-1"><label for="q17b">B. Ojos ahumados impactantes. </label><br>
+        <input type="radio" id="q17c" name="q17" value="Fuerza+1,Destreza-1"><label for="q17c">C. Labios impecables.</label>
+    </div>
 
-    <!-- Pregunta 9 -->
-    <p>9. ¿Cómo te comportas en una fiesta real?</p><section>
+    <div class="question">
+        <p>18. ¿Cómo reaccionas a una crítica negativa en redes sociales?</p>
+        <input type="radio" id="q18a" name="q18" value="Carisma+1,Fuerza-1"><label for="q18a">A. Con un gif divertido. </label><br>
+        <input type="radio" id="q18b" name="q18" value="Sabiduría+1,Inteligencia-1"><label for="q18b">B. Ignorándola y posteando contenido positivo. </label><br>
+        <input type="radio" id="q18c" name="q18" value="Inteligencia+1,Carisma-1"><label for="q18c">C. Reflexionando sobre cualquier mejora posible.</label>
+    </div>
 
-        <input type="radio" id="q9a" name="q9" value="Carisma+1,Destreza-1">
-        <label for="q9a">A. Me mezclo y charlo con todos los invitados.</label><br>
-        <input type="radio" id="q9b" name="q9" value="Sabiduria+1,Fuerza-1">
-        <label for="q9b">B. Observo discretamente desde un rincón.</label><br>
-        <input type="radio" id="q9c" name="q9" value="Constitucion+1,Inteligencia-1">
-        <label for="q9c">C. Me concentro en la comida y bebida.</label><br>
-    </section>
+    <div class="question">
+        <p>19. Elige un accesorio para completar tu look de noche.</p>
+        <input type="radio" id="q19a" name="q19" value="Destreza+1,Sabiduría-1"><label for="q19a">A. Un abanico elegante. </label><br>
+        <input type="radio" id="q19b" name="q19" value="Carisma+1,Destreza-1"><label for="q19b">B. Joyería llamativa. </label><br>
+        <input type="radio" id="q19c" name="q19" value="Fuerza+1,Inteligencia-1"><label for="q19c">C. Un bastón de mando.</label>
+    </div>
 
-    <!-- Pregunta 10 -->
-    <p>10. Enfrentas a un poderoso hechicero. ¿Cómo manejas la situación?</p><section>
-
-        <input type="radio" id="q10a" name="q10" value="Fuerza+1,Destreza-1">
-        <label for="q10a">A. Confronto su magia con ataques físicos.</label><br>
-        <input type="radio" id="q10b" name="q10" value="Inteligencia+1,Sabiduria-1">
-        <label for="q10b">B. Intento outsmart him with cunning plans.</label><br>
-        <input type="radio" id="q10c" name="q10" value="Carisma+1,Sabiduria-1">
-        <label for="q10c">C. Busco encontrar su debilidad emocional.</label><br>
-    </section>
-
-    <!-- Pregunta 11 -->
-    <p>11. Un ladrón te ha robado. ¿Cómo reaccionas?</p><section>
-
-        <input type="radio" id="q11a" name="q11" value="Destreza+1,Sabiduria-1">
-        <label for="q11a">A. Lo persigo a toda velocidad.</label><br>
-        <input type="radio" id="q11b" name="q11" value="Carisma+1,Inteligencia-1">
-        <label for="q11b">B. Grito para llamar atención y ayuda.</label><br>
-        <input type="radio" id="q11c" name="q11" value="Inteligencia+1,Fuerza-1">
-        <label for="q11c">C. Memorizo su rostro para futura referencia.</label><br>
-    </section>
-
-    <!-- Pregunta 12 -->
-    <p>12. Estás en una biblioteca antigua. ¿Qué haces?</p><section>
-
-        <input type="radio" id="q12a" name="q12" value="Inteligencia+1,Fuerza-1">
-        <label for="q12a">A. Estudio los libros más raros para aprender nuevos hechizos.</label><br>
-        <input type="radio" id="q12b" name="q12" value="Sabiduria+1,Carisma-1">
-        <label for="q12b">B. Busco conocimiento sobre la historia del lugar.</label><br>
-        <input type="radio" id="q12c" name="q12" value="Carisma+1,Constitucion-1">
-        <label for="q12c">C. Chismorreo con los bibliotecarios para obtener información.</label><br>
-    </section>
-
-    <!-- Pregunta 13 -->
-    <p>13. Un amigo te pide un préstamo de dinero. ¿Cómo respondes?</p><section>
-
-        <input type="radio" id="q13a" name="q13" value="Carisma+1,Sabiduria-1">
-        <label for="q13a">A. Le presto el dinero sin hacer preguntas.</label><br>
-        <input type="radio" id="q13b" name="q13" value="Sabiduria+1,Constitucion-1">
-        <label for="q13b">B. Le aconsejo sobre otras opciones para resolver su situación.</label><br>
-        <input type="radio" id="q13c" name="q13" value="Constitucion+1,Carisma-1">
-        <label for="q13c">C. Le doy el dinero, pero con un contrato de préstamo y plazos de pago.</label><br>
-    </section>
-
-    <!-- Pregunta 14 -->
-    <p>14. ¿Qué haces si te encuentras con un dragón en su guarida?</p><section>
-
-        <input type="radio" id="q14a" name="q14" value="Fuerza+1,Destreza-1">
-        <label for="q14a">A. Ataco con todo lo que tengo para impresionarlo.</label><br>
-        <input type="radio" id="q14b" name="q14" value="Sabiduria+1,Inteligencia-1">
-        <label for="q14b">B. Trato de hablar y negociar para evitar un enfrentamiento.</label><br>
-        <input type="radio" id="q14c" name="q14" value="Destreza+1,Fuerza-1">
-        <label for="q14c">C. Busco una salida o escondite para evitar ser visto.</label><br>
-    </section>
-
-    <!-- Pregunta 15 -->
-    <p>15. ¿Cómo enfrentas a un grupo de bandidos hostiles en el camino?</p><section>
-
-        <input type="radio" id="q15a" name="q15" value="Fuerza+1,Constitucion-1">
-        <label for="q15a">A. Me lanzo al ataque para sorprenderlos.</label><br>
-        <input type="radio" id="q15b" name="q15" value="Destreza+1,Carisma-1">
-        <label for="q15b">B. Intento convencerlos de que no soy una amenaza.</label><br>
-        <input type="radio" id="q15c" name="q15" value="Inteligencia+1,Destreza-1">
-        <label for="q15c">C. Planeo una estrategia para emboscarlos.</label><br>
-    </section>
-
-    <!-- Pregunta 16 -->
-    <p>16. Te encuentras con una criatura mágica en el bosque. ¿Cómo reaccionas?</p><section>
-
-        <input type="radio" id="q16a" name="q16" value="Inteligencia+1,Constitucion-1">
-        <label for="q16a">A. Intento comunicarme con ella utilizando magia.</label><br>
-        <input type="radio" id="q16b" name="q16" value="Sabiduria+1,Carisma-1">
-        <label for="q16b">B. Observo su comportamiento para determinar si es amigable o no.</label><br>
-        <input type="radio" id="q16c" name="q16" value="Carisma+1,Destreza-1">
-        <label for="q16c">C. Me acerco con cautela y trato de establecer una conexión emocional.</label><br>
-    </section>
-
-    <!-- Pregunta 17 -->
-    <p>17. ¿Qué haces si descubres una conspiración en tu reino?</p><section>
-
-        <input type="radio" id="q17a" name="q17" value="Inteligencia+1,Sabiduria-1">
-        <label for="q17a">A. Investigar y reunir pruebas para exponer la conspiración.</label><br>
-        <input type="radio" id="q17b" name="q17" value="Carisma+1,Constitucion-1">
-        <label for="q17b">B. Reunir aliados y prepararme para enfrentar la conspiración abiertamente.</label><br>
-        <input type="radio" id="q17c" name="q17" value="Sabiduria+1,Inteligencia-1">
-        <label for="q17c">C. Ignorar la conspiración y centrarme en mis propios asuntos.</label><br>
-    </section>
-
-    <!-- Pregunta 18 -->
-    <p>18. Te encuentras con un pueblo en apuros. ¿Cómo decides ayudar?</p><section>
-
-        <input type="radio" id="q18a" name="q18" value="Carisma+1,Destreza-1">
-        <label for="q18a">A. Organizo un evento benéfico para recaudar fondos.</label><br>
-        <input type="radio" id="q18b" name="q18" value="Sabiduria+1,Fuerza-1">
-        <label for="q18b">B. Ofrezco mi ayuda física y mano de obra para resolver problemas.</label><br>
-        <input type="radio" id="q18c" name="q18" value="Inteligencia+1,Carisma-1">
-        <label for="q18c">C. Creo un plan a largo plazo para mejorar la situación del pueblo.</label><br>
-    </section>
-
-    <!-- Pregunta 19 -->
-    <p>19. Encuentras una antigua reliquia mágica. ¿Qué haces con ella?</p><section>
-
-        <input type="radio" id="q19a" name="q19" value="Inteligencia+1,Fuerza-1">
-        <label for="q19a">A. Investigo su historia y propósito antes de decidir qué hacer.</label><br>
-        <input type="radio" id="q19b" name="q19" value="Carisma+1,Constitucion-1">
-        <label for="q19b">B. La exhibo para impresionar a los demás.</label><br>
-        <input type="radio" id="q19c" name="q19" value="Sabiduria+1,Destreza-1">
-        <label for="q19c">C. La mantengo oculta y la estudio en secreto.</label><br>
-    </section>
-
-    <!-- Pregunta 20 -->
-    <p>20. Te encuentras con un artefacto antiguo con poder destructivo. ¿Qué haces?</p><section>
-
-        <input type="radio" id="q20a" name="q20" value="Inteligencia+1,Carisma-1">
-        <label for="q20a">A. Trato de entender y controlar su poder.</label><br>
-        <input type="radio" id="q20b" name="q20" value="Sabiduria+1,Fuerza-1">
-        <label for="q20b">B. Busco una forma de destruirlo o sellarlo de forma segura.</label><br>
-        <input type="radio" id="q20c" name="q20" value="Constitucion+1,Destreza-1">
-        <label for="q20c">C. Me alejo de él y advierto a otros sobre su peligro.</label><br>
-    </section>
-
-    <!-- Botón para calcular las estadísticas -->
+    <div class="question">
+        <p>20. ¿Cómo gestionas múltiples actuaciones en una noche?</p>
+        <input type="radio" id="q20a" name="q20" value="Inteligencia+1,Fuerza-1"><label for="q20a">A. Planificación meticulosa. </label><br>
+        <input type="radio" id="q20b" name="q20" value="Sabiduría+1,Destreza-1"><label for="q20b">B. Delegando detalles a asistentes. </label><br>
+        <input type="radio" id="q20c" name="q20" value="Constitución+1,Carisma-1"><label for="q20c">C. Con energéticos naturales.</label>
+    </div>
     <button type="button" onclick="calcularEstadisticas()">Calcular Estadísticas</button>
 </form>
+
 </body>
 </html>
