@@ -23,12 +23,22 @@ function calcularEstadisticas() {
 
     const respuestas = document.querySelectorAll('input[type="radio"]:checked');
     respuestas.forEach((respuesta) => {
-        const efectos = respuesta.value.split(',');
-        const statPos = efectos[0].split('+')[0];
-        const statNeg = efectos[1].split('-')[0];
-        estadisticas[statPos] = Math.min(16, estadisticas[statPos] + parseInt(efectos[0].split('+')[1]));
-        estadisticas[statNeg] = Math.max(8, estadisticas[statNeg] - parseInt(efectos[1].split('-')[1]));
+    const efectos = respuesta.value.split(',');
+    efectos.forEach(efecto => {
+        const parts = efecto.split(/(\+|\-)/);
+        const stat = parts[0].trim(); // Asegura remover espacios extra
+        const sign = parts[1];
+        const value = parseInt(parts[2]);
+
+        if (!isNaN(value)) { // Verifica que 'value' sea un número válido
+            if (sign === '+') {
+                estadisticas[stat] = Math.min(16, estadisticas[stat] + value);
+            } else if (sign === '-') {
+                estadisticas[stat] = Math.max(8, estadisticas[stat] - value);
+            }
+        }
     });
+});
 
     const resultadoDiv = document.getElementById('resultado').querySelector('div');
     resultadoDiv.innerHTML = ''; // Limpia el contenido anterior
