@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Magic Surge Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #magicButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #6200ea;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #magicButton:hover {
+            background-color: #3700b3;
+        }
+
+        .effect-display {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="magicButton" style="font-size: 20px;">Generar Efecto de Magia Salvaje</button>
+        <div id="effectDisplay" class="effect-display" style="font-size: 35px;"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const magicButton = document.getElementById("magicButton");
+            const effectDisplay = document.getElementById("effectDisplay");
+
+            const effects = [
+                "Tira en esta tabla al comienzo de cada uno de tus turnos durante el próximo minuto, ignorando este resultado en tiradas subsecuentes.",
+                "Gastas todos tus puntos de hechicería, tomando 1d6 de daño de fuerza por cada punto perdido. Ganas puntos de golpe temporales equivalentes al daño recibido durante la próxima hora.",
+                "Tira en esta tabla dos veces, ignorando este resultado en tiradas subsecuentes.",
+                "Lanzas ver invisibilidad sobre ti mismo.",
+                "Un halo de letras aparece alrededor de tu cabeza. Durante la próxima hora, eres consciente si alguien que puedes oír está mintiendo.",
+                "Durante el próximo minuto, cualquier objeto inflamable que toques y que no esté siendo usado o llevado por otra criatura se incendia. Se puede escuchar una risa entre dientes desde el fuego.",
+                "Lanzas aliento de dragón. El tipo de daño es aleatorio.",
+                "Lanzas bola de fuego como un hechizo de nivel 3 centrado en ti mismo.",
+                "Lanzas tormenta de hielo como un hechizo de nivel 4 centrado en ti mismo.",
+                "Lanzas misil mágico como un hechizo de nivel 5.",
+                "Lanzas reducir sobre ti mismo.",
+                "Tira un d10. Tu altura cambia por un número de pulgadas igual al resultado. Si el resultado es impar, te encoges. Si es par, creces.",
+                "Una mala señal cae sobre ti. Cuando realices una prueba de habilidad, tirada de ataque o tirada de salvación, el DM puede forzarte a tirar con desventaja una vez.",
+                "Lanzas confusión centrado en ti mismo.",
+                "Lanzas sujetar persona sobre una criatura a 6 metros de ti. Si no eliges ninguna criatura, lo lanzas sobre ti mismo.",
+                "Durante el próximo minuto, recuperas 5 puntos de golpe al comienzo de cada uno de tus turnos.",
+                "Durante 10 minutos, hablas con una voz inusual de un extraño. La voz es disruptiva, pero cómo suena depende de ti.",
+                "Te crece una larga barba hecha de plumas que permanece hasta que estornudas, momento en el cual las plumas explotan desde tu cara.",
+                "Durante el próximo minuto, las criaturas a 9 metros de ti ganan 5 puntos de golpe temporales al comienzo de tu turno. Estos puntos de golpe no se acumulan.",
+                "Lanzas grasiento centrado en ti mismo.",
+                "Tu cabello se vuelve de un color rosa brillante.",
+                "El aire se carga de magia. Las criaturas tienen desventaja en las tiradas de salvación contra el próximo hechizo que lances en el próximo minuto que implique una tirada de salvación.",
+                "Infundes magia en las criaturas. Las criaturas de tu elección a 9 metros de ti tienen ventaja contra el próximo efecto que implique una tirada de salvación.",
+                "Tu piel se vuelve de un tono vibrante de azul. Un hechizo de quitar maldición puede acabar con este efecto.",
+                "Te encierras en un bloque de tierra que llena todos los espacios de 1,5 metros a tu alrededor. Si una criatura está en un espacio donde aparece la tierra, es empujada al espacio desocupado más cercano. Cada sección de 1,5 metros del bloque tiene 20 puntos de golpe y una CA de 17.",
+                "Un ojo aparece en tu frente durante la próxima hora. Durante ese tiempo, tienes ventaja en las pruebas de Percepción que dependan de la vista.",
+                "Tus manos se convierten en puños de hierro durante el próximo minuto. No puedes mover los dedos, pero tus ataques desarmados infligen 1d6 de daño contundente.",
+                "Durante el próximo minuto, todos tus hechizos con un tiempo de lanzamiento de 1 acción tienen un tiempo de lanzamiento de 1 acción adicional.",
+                "Te vuelves ligeramente intoxicado y tienes dificultad para concentrarte. Tienes desventaja en mantener la concentración en los hechizos durante la próxima hora.",
+                "Te teletransportas hasta 18 metros a un espacio desocupado de tu elección que puedas ver.",
+                "Durante el próximo minuto, cualquier hechizo que lances que cueste una acción te permite volar inmediatamente 4,5 metros mediante vientos mágicos que te transportan brevemente y te depositan en una superficie. Este movimiento no provoca ataques de oportunidad.",
+                "Eres transportado al Plano Astral hasta el final de tu próximo turno, después del cual regresas al espacio que ocupabas previamente o al espacio desocupado más cercano si ese espacio está ocupado.",
+                "Lanzas paso brumoso, llegando a tu ubicación en una explosión de deliciosos alimentos.",
+                "Maximizas el daño del próximo hechizo dañino que lances en el próximo minuto.",
+                "Un poder helado gira a tu alrededor. Durante el próximo minuto, puedes lanzar rayo de escarcha como una acción adicional.",
+                "Tira un d10. Tu edad cambia por un número de años igual al resultado. Si el resultado es impar, te vuelves más joven (mínimo 1 año de edad). Si es par, envejeces.",
+                "Tu próximo hechizo dañino lanzado en el próximo minuto crea un puño espectral que derriba al objetivo o los objetivos.",
+                "Aparecen 1d6 flumphs controlados por el DM en espacios desocupados a 18 metros de ti y te temen. Desaparecen después de 1 minuto.",
+                "Durante la próxima hora, dejas un rastro de flores, hongos y musgo donde pises.",
+                "Recuperas 2d10 puntos de golpe.",
+                "Cambias de posición con una criatura de tu elección dentro de 18 metros en una nube de humo.",
+                "Te conviertes en una planta en maceta hasta el comienzo de tu próximo turno. Mientras eres una planta, estás incapacitado y tienes vulnerabilidad a todo el daño. Si caes a 0 puntos de golpe, la maceta se rompe y tu forma se revierte.",
+                "Lanzas enredar.",
+                "Durante el próximo minuto, puedes teletransportarte hasta 6 metros como una acción adicional en cada uno de tus turnos.",
+                "Durante el próximo minuto, te mueves 1,5 metros en una dirección aleatoria al final de cada uno de tus turnos.",
+                "Lanzas levitar sobre ti mismo.",
+                "Durante la próxima hora, puedes caminar por paredes y techos.",
+                "Un unicornio controlado por el DM aparece en un espacio a 1,5 metros de ti y luego desaparece 1 minuto después.",
+                "Una voz en alto narra tus pensamientos y acciones durante el próximo minuto. Puede ser escuchada claramente a hasta 30 metros de distancia.",
+                "No puedes hablar durante el próximo minuto. Cada vez que lo intentas, burbujas rosas salen de tu boca.",
+                "Lloras incontrolablemente durante el próximo minuto. Cada vez que intentas hablar, hipas ruidosamente y sale moco de tu nariz.",
+                "Un escudo espectral flota cerca de ti durante el próximo minuto, otorgándote un +2 a la CA e inmunidad a misil mágico.",
+                "Aparece un plátano en tu hombro durante el próximo minuto. Mientras sostengas el plátano en la mano o en la boca, ganas un +2 a todas las tiradas de salvación.",
+                "Eres inmune a la intoxicación por alcohol durante los próximos 5d6 días. Un tatuaje que dice \"sobrio\" aparece en tu frente durante el mismo tiempo.",
+                "Hasta cuatro criaturas de tu elección dentro de 18 metros caen al suelo por una fuerza misteriosa.",
+                "Tu cabello se cae pero vuelve a crecer en 24 horas.",
+                "Tu piel se pudre y se descompone. Tienes desventaja en todas las pruebas de persuasión, pero los no-muertos te ignoran a menos que los ataques. Esto se puede aliviar con un hechizo de restauración mayor.",
+                "Un modrón elegido y controlado por el DM aparece en un espacio desocupado a 1,5 metros de ti, luego desaparece 1 minuto después.",
+                "Puedes hablar con animales pequeños durante 1 hora. Los pájaros y criaturas te buscan para contarte secretos aleatorios que han adquirido.",
+                "Recuperas tu espacio de hechizo de menor nivel gastado.",
+                "Tus ojos brillan como linternas multicolores durante las próximas 24 horas.",
+                "Durante el próximo minuto, debes gritar cuando hables.",
+                "Lanzas enredar centrado en ti mismo.",
+                "Lanzas nube de niebla centrado en ti mismo.",
+                "Creas una explosión de retroalimentación psíquica para ti y una criatura a 18 metros. La criatura recibe 6d6 de daño psíquico y quedas aturdido hasta el final de tu próximo turno.",
+                "Hasta tres criaturas de tu elección dentro de 9 metros reciben 4d10 de daño eléctrico.",
+                "Aparece una copia ilusoria de ti. Al comienzo de tu próximo turno, corre hacia la criatura más cercana que consideres un enemigo a 18 metros y explota, infligiendo 3d10 de daño de fuerza en un radio de 6 metros. Si no hay enemigos, corre hacia ti.",
+                "Percibes a la criatura más cercana como si dijera algo hiriente sobre ti. Tienes miedo de esa criatura hasta el final de tu próximo turno.",
+                "Una criatura aleatoria a 9 metros queda encantada por ti hasta el final de tu próximo turno.",
+                "Cada criatura a 9 metros de ti se vuelve invisible durante el próximo minuto. La invisibilidad termina en una criatura cuando ataca o lanza un hechizo.",
+                "Ya no necesitas comida, salvo al menos una taza de té al día. Si vuelves a sacar este resultado, vuelves a necesitar comida.",
+                "Ganas resistencia a todo el daño durante el próximo minuto.",
+                "Lanzas miedo.",
+                "Una criatura aleatoria a 18 metros de ti queda envenenada durante 1d4 horas. Si usa una acción para vomitar y recibe 3d10 de daño de veneno, la condición de envenenado termina.",
+                "Lanzas piel pétrea sobre ti mismo. Mientras el hechizo esté activo, tu velocidad de movimiento se reduce a 3 metros.",
+                "Brillas con luz brillante en un radio de 9 metros durante el próximo minuto. Cualquier criatura que termine su turno a 1,5 metros de ti queda cegada hasta el final de su siguiente turno.",
+                "Lanzas hablar con los muertos sobre el próximo cadáver que toques.",
+                "Lanzas polimorfismo sobre ti mismo. Si fallas la tirada de salvación, te conviertes en una oveja durante la duración del hechizo.",
+                "Lanzas conferir maldición como un hechizo de nivel 5 sobre la próxima criatura que toques.",
+                "Mariposas ilusorias y pétalos de flores flotan en el aire a 3 metros de ti durante el próximo minuto.",
+                "Un sonido de pedo masivo emana de ti. Es audible a 90 metros de distancia.",
+                "Puedes realizar una acción adicional inmediatamente.",
+                "Tu lengua se convierte en plata. Hablas y entiendes todos los idiomas durante una hora.",
+                "Cada criatura a 9 metros de ti recibe 1d10 de daño necrótico. Recuperas puntos de golpe igual a la suma del daño necrótico infligido.",
+                "Una explosión de color sale de ti. Cada criatura a 9 metros de ti sana 3d10 puntos de golpe, excepto tú.",
+                "Lanzas imagen múltiple.",
+                "Lanzas detectar pensamientos. Esto dura 1 hora y no necesitas concentrarte para mantener el efecto. Cada vez que uses tu acción para enfocarte, recibes 1d6 de daño psíquico.",
+                "Pústulas tóxicas crecen en tu cuerpo y explotan. Las criaturas a 1,5 metros reciben 3d10 de daño por ácido. Durante los próximos 1d6 días tienes desventaja en todas las pruebas de Carisma.",
+                "Lanzas telaraña.",
+                "Te vuelves invisible durante el próximo minuto. Durante ese tiempo, otras criaturas no pueden oírte. La invisibilidad termina si atacas o lanzas un hechizo.",
+                "Aprendes un hechizo de nivel 1 aleatorio.",
+                "Si mueres durante el próximo minuto, vuelves a la vida inmediatamente como si fuera por el hechizo reencarnar.",
+                "Te vuelves atlético. Tienes ventaja en todas las pruebas de fuerza, constitución y destreza durante el próximo minuto.",
+                "Tu tamaño aumenta en una categoría de tamaño durante el próximo minuto.",
+                "La carisma emana de ti durante el próximo minuto. Puedes usar tu acción para adoptar una pose. Una criatura de tu elección que pueda verte gana un dado de inspiración de d8 que puede añadir a una tirada de ataque, prueba de habilidad o tirada de salvación. Este dado dura hasta el final del minuto y no se acumula si la criatura ya tiene uno de estos dados.",
+                "Tú y todas las criaturas a 9 metros de ti ganan vulnerabilidad al daño perforante durante el próximo minuto.",
+                "Vuelve a tirar, y puedes gastar 1 punto de hechicería para moverte un espacio hacia arriba o hacia abajo en esta tabla respecto al resultado obtenido. Puedes pagar esto múltiples veces para moverte múltiples espacios.",
+                "Estás rodeado de una música etérea y suave durante el próximo minuto.",
+                "Un pilar de magia salvaje explota desde ti, y recuperas todos los puntos de hechicería gastados.",
+                "Lanzas restauración mayor sobre ti mismo y recuperas todos los puntos de golpe perdidos."
+            ];
+
+            magicButton.addEventListener("click", function() {
+                const randomIndex = Math.floor(Math.random() * effects.length);
+                const randomEffect = effects[randomIndex];
+                effectDisplay.textContent = randomEffect;
+            });
+        });
+    </script>
+</body>
+</html>
